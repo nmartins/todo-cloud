@@ -32,9 +32,14 @@ script:
   - docker run nmartins/todo-cache-service-test npm test
 
 after_success:
+  # See contents of existing directory in Travis
+  - ls
+
   # Build Production Images for deployment
   - docker-compose -f docker-compose.yml -f docker-compose.prod.yml build
+  
   # Login to Docker Hub
   - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_ID" --password-stdin
+
   # Take the built production images and push to Docker Hub
   - docker-compose -f docker-compose.yml -f docker-compose.prod.yml push
