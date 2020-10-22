@@ -19,7 +19,7 @@ services:
       dockerfile: ../Dockerfile.nodejs.prod
     image: labaredas/todo-search-ingestion:1.0
     command: sh /home/node/app/start.sh
-    
+
   todo-search-service:
     build:
       dockerfile: ../Dockerfile.nodejs.prod
@@ -52,5 +52,3 @@ services:
 
   todo-proxy:
     image: labaredas/todo-proxy:1.0
-
-
